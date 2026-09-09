@@ -1,0 +1,77 @@
+@import "tailwindcss";
+@import "leaflet/dist/leaflet.css";
+
+@theme {
+  --font-sans: "IBM Plex Sans", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, monospace;
+
+  --color-base: #0A0E14;
+  --color-panel: #121821;
+  --color-panel-raised: #161D28;
+  --color-border: #232B37;
+  --color-border-soft: #1A212C;
+  --color-text: #E6EAF0;
+  --color-muted: #8592A6;
+  --color-dim: #5B6577;
+
+  --color-system: #4C8DFF;
+  --color-system-dim: #1E3A66;
+
+  --color-critical: #EF4444;
+  --color-high: #F97316;
+  --color-medium: #EAB308;
+  --color-low: #22C55E;
+}
+
+@layer base {
+  html, body, #root {
+    height: 100%;
+  }
+  body {
+    background-color: var(--color-base);
+    color: var(--color-text);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+  }
+  ::selection {
+    background: var(--color-system-dim);
+  }
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: #2A3342 transparent;
+  }
+  ::-webkit-scrollbar { width: 8px; height: 8px; }
+  ::-webkit-scrollbar-thumb { background: #2A3342; border-radius: 4px; }
+  ::-webkit-scrollbar-track { background: transparent; }
+}
+
+/* Leaflet dark tile filter for a command-center map look */
+.map-dark-tiles {
+  filter: brightness(0.62) contrast(1.15) saturate(0.35) invert(1) hue-rotate(180deg);
+}
+.leaflet-container {
+  background: #0A0E14 !important;
+  font-family: var(--font-sans) !important;
+}
+.leaflet-popup-content-wrapper {
+  background: #161D28 !important;
+  color: #E6EAF0 !important;
+  border: 1px solid #232B37 !important;
+  border-radius: 4px !important;
+}
+.leaflet-popup-tip {
+  background: #161D28 !important;
+}
+.leaflet-control-zoom a {
+  background: #161D28 !important;
+  color: #E6EAF0 !important;
+  border-color: #232B37 !important;
+}
+
+@keyframes pulse-dot {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.35; }
+}
+.pulse-dot {
+  animation: pulse-dot 1.6s ease-in-out infinite;
+}
